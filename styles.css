@@ -1,0 +1,223 @@
+body {
+  background-color: #f6f7f8;
+  padding: 18px;
+}
+
+nav {
+  padding: 0 32px;
+  height: 72px;
+  background-color: #ffffff;
+  border-radius: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.nav-link p {
+  color: #072635;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.profile {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.profile-info {
+  padding-right: 12px;
+  border-right: 1px solid #ededed;
+}
+
+.profile-info p {
+  margin: 0;
+  color: #072635;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.profile-info .subtext {
+  color: #707070;
+  font-weight: normal;
+}
+
+.profile-settings {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+aside {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.aside-header {
+  width: 317px;
+}
+
+.aside-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.scrollable {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.patient-list {
+  list-style: none;
+  padding: 0;
+}
+
+.patient-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  width: 317px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.patient-list .patient-info {
+  display: flex;
+  align-items: center;
+}
+
+.patient-list .patient-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.patient-list .patient-details p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.patient-list .patient-details .smtxt {
+  color: #707070;
+  font-size: 14px;
+}
+
+.graph-container {
+  width: 766px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+.graph-container h2 {
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+.graph {
+  background-color: #f4f0fe;
+}
+
+.jessica {
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+.jessica-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jessica-info img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background-color: #f6f7f8;
+}
+
+.jessica-info h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.jessica-detail {
+  display: flex;
+  border: 1px solid #f6f7f8;
+  padding: 12px;
+  gap: 12px;
+  width: 100%;
+}
+
+.jessica-detail img {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f7f8;
+  border-radius: 50%;
+}
+
+.jessica-detail div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.jessica-detail p {
+  margin: 0;
+}
+
+.jessica-detail .label {
+  color: #707070;
+}
+
+.jessica-detail .value {
+  color: #072635;
+  font-size: 14px;
+  font-weight: bold;
+}
+.img-info {
+  width: 42px;
+  height: 42px;
+  background-color: #f6f7f8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img-info img {
+  border-radius: 0;
+  max-width: 18px; /* Adjust as necessary */
+  max-height: 18px; /* Adjust as necessary */
+}
