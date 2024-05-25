@@ -60,10 +60,31 @@
       <div class="graph-container">
         <div class="flex justify-between">
           <h2>Diagnosis History</h2>
-          <p>Last 6 months</p>
         </div>
         <div class="graph">
-          <canvas id="myChart"></canvas>
+          <div class="blood_pressure">
+            <div class="mygraph">
+              <div class="flex justify-between">
+                <p>Blood Pressure</p>
+                <p>Last 6 months</p>
+              </div>
+              <canvas id="myChart"></canvas>
+            </div>
+
+            <div class="average_values">
+              <div>
+                <div class="radio"></div>
+                <p id="systolic_value"></p>
+                <p id="systolic_levels"></p>
+              </div>
+              <hr />
+              <div>
+                <div class="radio"></div>
+                <p id="diastolic_value"></p>
+                <p id="diastolic_levels"></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="jessica" id="jessica-info">
@@ -147,17 +168,17 @@
         listItem.className = "patient-item";
 
         listItem.innerHTML = `
-          <div class="patient-info">
-            <img src="${patient.profile_picture}" alt="${patient.name}" class="patient-image">
-            <div class="patient-details">
-              <p class="font-semibold">${patient.name}</p>
-              <div class="flex">
-                <p class="smtxt text-gray-500">${patient.gender} ${patient.age}</p>
+            <div class="patient-info">
+              <img src="${patient.profile_picture}" alt="${patient.name}" class="patient-image">
+              <div class="patient-details">
+                <p class="font-semibold">${patient.name}</p>
+                <div class="flex">
+                  <p class="smtxt text-gray-500">${patient.gender} ${patient.age}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <img src="./static/moreh.svg" alt="more"/>
-        `;
+            <img src="./static/moreh.svg" alt="more"/>
+          `;
         patientList.appendChild(listItem);
       });
 
@@ -165,37 +186,110 @@
         (patient) => patient.name === "Jessica Taylor"
       );
 
-      const jessica_health = jessica.diagnosis_history;
-      const latest_date = new Date("2024-03");
-      const start_date = new Date();
-      start_date.setMonth(latest_date.getMonth() - 5);
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
 
-      console.log(start_date.Month);
+      const monthMap = {
+        January: 0,
+        February: 1,
+        March: 2,
+        April: 3,
+        May: 4,
+        June: 5,
+        July: 6,
+        August: 7,
+        September: 8,
+        October: 9,
+        November: 10,
+        December: 11,
+      };
+
+      const jessica_health = jessica.diagnosis_history;
+      // Get the latest month and year from the first object in jessica_health
+      const latestMonth = monthMap[jessica_health[0].month];
+      const latestYear = jessica_health[0].year;
+
+      // Calculate the start date for the past 6 months
+      const startDate = new Date(latestYear, latestMonth - 5);
+
+      // Create the latestDate object
+      const latestDate = new Date(latestYear, latestMonth);
+
+      // Filter the jessica_health data to include only the records from the last 6 months
+      const recentHealth = jessica_health.filter((record) => {
+        const recordDate = new Date(record.year, monthMap[record.month]);
+        return recordDate >= startDate && recordDate <= latestDate;
+      });
+
+      const label = recentHealth.map(
+        (record) =>
+          `${shortenMonthName(monthMap[record.month] + 1)}, ${record.year}`
+      );
+
+      const labels = label.reverse();
+
+      const systolicValues = recentHealth.map(
+        (record) => record.blood_pressure.systolic.value
+      );
+      const diastolicValues = recentHealth.map(
+        (record) => record.blood_pressure.diastolic.value
+      );
 
       const ctx = document.getElementById("myChart");
-
       new Chart(ctx, {
         type: "line",
         data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: labels,
           datasets: [
             {
-              label: "# of Votes",
-              data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1,
+              label: "Systolic",
+              data: systolicValues,
+              borderColor: "rgba(194, 110, 180, 1)",
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderWidth: 2,
+            },
+            {
+              label: "Diastolic",
+              data: diastolicValues,
+              borderColor: "rgba(126, 108, 171, 1)",
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderWidth: 2,
             },
           ],
         },
         options: {
-          animation: false,
+          animation: true,
           elements: {
             line: {
-              tension: 0.4, // smooth lines
+              tension: 0.4, // Adjust line tension for smoothness
             },
           },
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: false,
+              min: 60, // Start Y-axis from 60
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
             },
           },
         },
@@ -211,6 +305,7 @@
           };
           return new Intl.DateTimeFormat("en-US", options).format(date);
         };
+        blood_pressure = jessica.diagnosis_history[0].blood_pressure;
 
         document.getElementById("jessica-image").src = jessica.profile_picture;
         document.getElementById("jessica-name").textContent = jessica.name;
@@ -224,11 +319,40 @@
           jessica.emergency_contact;
         document.getElementById("jessica-insurance").textContent =
           jessica.insurance_type;
+
+        document.getElementById("systolic_value").textContent =
+          blood_pressure.systolic.value;
+        document.getElementById("systolic_levels").textContent =
+          blood_pressure.systolic.levels;
+        document.getElementById("diastolic_value").textContent =
+          blood_pressure.diastolic.value;
+        document.getElementById("diastolic_levels").textContent =
+          blood_pressure.diastolic.levels;
       }
     } catch (error) {
       console.error("Fetch error: ", error);
     }
   }
+
+  // edited code start
+  function shortenMonthName(month) {
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return monthNames[month - 1];
+  }
+  // edited code end
 
   window.onload = fetchPatients;
 </script>

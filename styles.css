@@ -141,6 +141,8 @@ aside {
 
 .graph {
   background-color: #f4f0fe;
+  border-radius: 12px;
+  padding: 16px;
 }
 
 .jessica {
@@ -220,4 +222,26 @@ aside {
   border-radius: 0;
   max-width: 18px; /* Adjust as necessary */
   max-height: 18px; /* Adjust as necessary */
+}
+
+.radio {
+  background-color: #e66fd2;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: solid 1px white;
+}
+
+.mygraph {
+  min-width: 400px;
+}
+
+.blood_pressure {
+  display: flex;
+  gap: 20px;
+}
+.average_values {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
