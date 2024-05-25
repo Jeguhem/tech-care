@@ -139,12 +139,6 @@ aside {
   font-weight: 700;
 }
 
-.graph {
-  background-color: #f4f0fe;
-  border-radius: 12px;
-  padding: 16px;
-}
-
 .jessica {
   padding: 32px;
   background-color: #ffffff;
@@ -218,10 +212,14 @@ aside {
   overflow: hidden;
 }
 
-.img-info img {
-  border-radius: 0;
-  max-width: 18px; /* Adjust as necessary */
-  max-height: 18px; /* Adjust as necessary */
+.button {
+  background-color: #01f0d0;
+  border-radius: 41px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin-top: 40px;
 }
 
 .radio {
@@ -239,9 +237,35 @@ aside {
 .blood_pressure {
   display: flex;
   gap: 20px;
+  background-color: #f4f0fe;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 40px;
 }
 .average_values {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.lungs {
+  background-color: #e0f3fa;
+}
+.heart_rate {
+  background-color: #ffe6f1;
+}
+.temperature {
+  background-color: #ffe6e9;
+}
+
+.heart_conditions {
+  display: flex;
+  gap: 21px;
+  margin-top: 20px;
+  border: solid;
+}
+
+.health_details {
+  padding: 16px;
+  border-radius: 12px;
 }

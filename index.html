@@ -66,7 +66,10 @@
             <div class="mygraph">
               <div class="flex justify-between">
                 <p>Blood Pressure</p>
-                <p>Last 6 months</p>
+                <div class="flex">
+                  <img src="./static/ArrowDown.svg" />
+                  <p>Last 6 months</p>
+                </div>
               </div>
               <canvas id="myChart"></canvas>
             </div>
@@ -75,16 +78,47 @@
               <div>
                 <div class="radio"></div>
                 <p id="systolic_value"></p>
-                <p id="systolic_levels"></p>
+                <div class="flex">
+                  <img src="./static/ArrowDown.svg" />
+                  <p id="systolic_levels"></p>
+                </div>
               </div>
               <hr />
               <div>
                 <div class="radio"></div>
                 <p id="diastolic_value"></p>
-                <p id="diastolic_levels"></p>
+                <div class="flex">
+                  <img src="./static/ArrowDown.svg" />
+                  <p id="diastolic_levels"></p>
+                </div>
               </div>
             </div>
           </div>
+          <!--heart conditions-->
+          <div class="heart_conditions">
+            <div class="health_details lungs">
+              <img src="./static/lungs.svg" />
+              <p>Respiratory rate</p>
+              <p id="respiratory_rate_value"></p>
+              <p id="respiratory_rate_levels"></p>
+            </div>
+            <div class="health_details temperature">
+              <img src="./static/temperature.svg" />
+              <p>Temperature</p>
+              <p id="temperature_value"></p>
+              <p id="temperature_levels"></p>
+            </div>
+            <div class="health_details heart_rate">
+              <img src="./static/HeartBPM.svg" />
+              <p>Heart Rate</p>
+              <p id="heart_rate_value"></p>
+              <div class="flex">
+                <img src="./static/ArrowDown.svg" />
+                <p id="heart_rate_levels"></p>
+              </div>
+            </div>
+          </div>
+          <!--heart conditions-->
         </div>
       </div>
       <div class="jessica" id="jessica-info">
@@ -92,7 +126,7 @@
         <h2 id="jessica-name"></h2>
         <div class="jessica-detail">
           <div class="img-info">
-            <img src="./static/calendar.svg" alt="calendar" class="" />
+            <img src="./static/BirthIcon.svg" alt="calendar" class="" />
           </div>
           <div>
             <p class="label">Date of Birth</p>
@@ -101,7 +135,7 @@
         </div>
         <div class="jessica-detail">
           <div class="img-info">
-            <img src="./static/calendar.svg" alt="calendar" class="" />
+            <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
           </div>
           <div>
             <p class="label">Gender</p>
@@ -110,7 +144,7 @@
         </div>
         <div class="jessica-detail">
           <div class="img-info">
-            <img src="./static/calendar.svg" alt="calendar" class="" />
+            <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
           </div>
           <div>
             <p class="label">Contact Info</p>
@@ -119,7 +153,7 @@
         </div>
         <div class="jessica-detail">
           <div class="img-info">
-            <img src="./static/calendar.svg" alt="calendar" class="" />
+            <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
           </div>
           <div>
             <p class="label">Emergency Contacts</p>
@@ -128,13 +162,14 @@
         </div>
         <div class="jessica-detail">
           <div class="img-info">
-            <img src="./static/calendar.svg" alt="calendar" class="" />
+            <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
           </div>
           <div>
             <p class="label">Insurance Provider</p>
             <p id="jessica-insurance" class="value"></p>
           </div>
         </div>
+        <button class="button">Show All Information</button>
       </div>
     </div>
   </body>
@@ -306,6 +341,9 @@
           return new Intl.DateTimeFormat("en-US", options).format(date);
         };
         blood_pressure = jessica.diagnosis_history[0].blood_pressure;
+        respiratory_rate = jessica.diagnosis_history[0].respiratory_rate;
+        temperature = jessica.diagnosis_history[0].temperature;
+        heart_rate = jessica.diagnosis_history[0].heart_rate;
 
         document.getElementById("jessica-image").src = jessica.profile_picture;
         document.getElementById("jessica-name").textContent = jessica.name;
@@ -328,6 +366,18 @@
           blood_pressure.diastolic.value;
         document.getElementById("diastolic_levels").textContent =
           blood_pressure.diastolic.levels;
+        document.getElementById("respiratory_rate_value").textContent =
+          respiratory_rate.value;
+        document.getElementById("respiratory_rate_levels").textContent =
+          respiratory_rate.levels;
+        document.getElementById("temperature_value").textContent =
+          temperature.value;
+        document.getElementById("temperature_levels").textContent =
+          temperature.levels;
+        document.getElementById("heart_rate_value").textContent =
+          heart_rate.value;
+        document.getElementById("heart_rate_levels").textContent =
+          heart_rate.levels;
       }
     } catch (error) {
       console.error("Fetch error: ", error);
