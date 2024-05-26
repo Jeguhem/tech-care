@@ -10,6 +10,7 @@
     <link href="./styles.css" rel="stylesheet" />
     <title>Document</title>
   </head>
+
   <body>
     <nav>
       <img src="./static/TestLogo.svg" alt="logo" />
@@ -54,122 +55,153 @@
       <aside>
         <div class="aside-header">
           <h2>Patients</h2>
+          <img src="./static/search.svg" />
         </div>
         <ul id="patient-list" class="patient-list scrollable"></ul>
       </aside>
-      <div class="graph-container">
-        <div class="flex justify-between">
-          <h2>Diagnosis History</h2>
-        </div>
-        <div class="graph">
-          <div class="blood_pressure">
-            <div class="mygraph">
-              <div class="flex justify-between">
-                <p>Blood Pressure</p>
-                <div class="flex">
-                  <img src="./static/ArrowDown.svg" />
-                  <p>Last 6 months</p>
-                </div>
-              </div>
-              <canvas id="myChart"></canvas>
-            </div>
 
-            <div class="average_values">
-              <div>
-                <div class="radio"></div>
-                <p id="systolic_value"></p>
-                <div class="flex">
-                  <img src="./static/ArrowDown.svg" />
-                  <p id="systolic_levels"></p>
+      <div class="middle">
+        <div class="graph-container">
+          <div class="flex justify-between">
+            <h2>Diagnosis History</h2>
+          </div>
+          <div class="graph">
+            <div class="blood_pressure">
+              <div class="mygraph">
+                <div class="flex justify-between">
+                  <p>Blood Pressure</p>
+                  <div class="flex">
+                    <img src="./static/ArrowDown.svg" />
+                    <p>Last 6 months</p>
+                  </div>
+                </div>
+                <canvas id="myChart"></canvas>
+              </div>
+
+              <div class="average_values">
+                <div>
+                  <div class="radio"></div>
+                  <p id="systolic_value"></p>
+                  <div class="flex">
+                    <img src="./static/ArrowDown.svg" />
+                    <p id="systolic_levels"></p>
+                  </div>
+                </div>
+                <hr />
+                <div>
+                  <div class="radio"></div>
+                  <p id="diastolic_value"></p>
+                  <div class="flex">
+                    <img src="./static/ArrowDown.svg" />
+                    <p id="diastolic_levels"></p>
+                  </div>
                 </div>
               </div>
-              <hr />
-              <div>
-                <div class="radio"></div>
-                <p id="diastolic_value"></p>
+            </div>
+            <!--heart conditions-->
+            <div class="heart_conditions">
+              <div class="health_details lungs">
+                <img src="./static/lungs.svg" />
+                <p>Respiratory rate</p>
+                <p id="respiratory_rate_value"></p>
+                <p id="respiratory_rate_levels"></p>
+              </div>
+              <div class="health_details temperature">
+                <img src="./static/temperature.svg" />
+                <p>Temperature</p>
+                <p id="temperature_value"></p>
+                <p id="temperature_levels"></p>
+              </div>
+              <div class="health_details heart_rate">
+                <img src="./static/HeartBPM.svg" />
+                <p>Heart Rate</p>
+                <p id="heart_rate_value"></p>
                 <div class="flex">
                   <img src="./static/ArrowDown.svg" />
-                  <p id="diastolic_levels"></p>
+                  <p id="heart_rate_levels"></p>
                 </div>
               </div>
             </div>
+            <!--heart conditions-->
           </div>
-          <!--heart conditions-->
-          <div class="heart_conditions">
-            <div class="health_details lungs">
-              <img src="./static/lungs.svg" />
-              <p>Respiratory rate</p>
-              <p id="respiratory_rate_value"></p>
-              <p id="respiratory_rate_levels"></p>
-            </div>
-            <div class="health_details temperature">
-              <img src="./static/temperature.svg" />
-              <p>Temperature</p>
-              <p id="temperature_value"></p>
-              <p id="temperature_levels"></p>
-            </div>
-            <div class="health_details heart_rate">
-              <img src="./static/HeartBPM.svg" />
-              <p>Heart Rate</p>
-              <p id="heart_rate_value"></p>
-              <div class="flex">
-                <img src="./static/ArrowDown.svg" />
-                <p id="heart_rate_levels"></p>
-              </div>
-            </div>
-          </div>
-          <!--heart conditions-->
         </div>
+
+        <!--Diagnostic List start-->
+        <div class="diagnostic_list graph-container">
+          <p>Diagnostic List</p>
+          <table class="table">
+            <div class="thead">
+              <p>Problem/Diagnosis</p>
+              <p>Description</p>
+              <p>Status</p>
+            </div>
+            <div>
+              <ul id="diagnostic_list" class=""></ul>
+            </div>
+          </table>
+        </div>
+        <!--Diagnostic List end-->
       </div>
-      <div class="jessica" id="jessica-info">
-        <img id="jessica-image" src="" alt="" class="jessica-image" />
-        <h2 id="jessica-name"></h2>
-        <div class="jessica-detail">
-          <div class="img-info">
-            <img src="./static/BirthIcon.svg" alt="calendar" class="" />
+
+      <div class="end">
+        <div class="jessica" id="jessica-info">
+          <img id="jessica-image" src="" alt="" class="jessica-image" />
+          <h2 id="jessica-name"></h2>
+          <div class="jessica-detail">
+            <div class="img-info">
+              <img src="./static/BirthIcon.svg" alt="calendar" class="" />
+            </div>
+            <div>
+              <p class="label">Date of Birth</p>
+              <p id="jessica-dob" class="value"></p>
+            </div>
           </div>
-          <div>
-            <p class="label">Date of Birth</p>
-            <p id="jessica-dob" class="value"></p>
+          <div class="jessica-detail">
+            <div class="img-info">
+              <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
+            </div>
+            <div>
+              <p class="label">Gender</p>
+              <p id="jessica-gender" class="value"></p>
+            </div>
+          </div>
+          <div class="jessica-detail">
+            <div class="img-info">
+              <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+            </div>
+            <div>
+              <p class="label">Contact Info</p>
+              <p id="jessica-phone" class="value"></p>
+            </div>
+          </div>
+          <div class="jessica-detail">
+            <div class="img-info">
+              <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+            </div>
+            <div>
+              <p class="label">Emergency Contacts</p>
+              <p id="jessica-emergency" class="value"></p>
+            </div>
+          </div>
+          <div class="jessica-detail">
+            <div class="img-info">
+              <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
+            </div>
+            <div>
+              <p class="label">Insurance Provider</p>
+              <p id="jessica-insurance" class="value"></p>
+            </div>
+          </div>
+          <button class="button">Show All Information</button>
+        </div>
+        <!--lab result start-->
+        <div class="lab_result">
+          <h2>Lab Results</h2>
+          <div class="lab_list">
+            <ul id="lab_result"></ul>
           </div>
         </div>
-        <div class="jessica-detail">
-          <div class="img-info">
-            <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
-          </div>
-          <div>
-            <p class="label">Gender</p>
-            <p id="jessica-gender" class="value"></p>
-          </div>
-        </div>
-        <div class="jessica-detail">
-          <div class="img-info">
-            <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
-          </div>
-          <div>
-            <p class="label">Contact Info</p>
-            <p id="jessica-phone" class="value"></p>
-          </div>
-        </div>
-        <div class="jessica-detail">
-          <div class="img-info">
-            <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
-          </div>
-          <div>
-            <p class="label">Emergency Contacts</p>
-            <p id="jessica-emergency" class="value"></p>
-          </div>
-        </div>
-        <div class="jessica-detail">
-          <div class="img-info">
-            <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
-          </div>
-          <div>
-            <p class="label">Insurance Provider</p>
-            <p id="jessica-insurance" class="value"></p>
-          </div>
-        </div>
-        <button class="button">Show All Information</button>
+        <!--lab result end-->
       </div>
     </div>
   </body>
@@ -206,9 +238,9 @@
             <div class="patient-info">
               <img src="${patient.profile_picture}" alt="${patient.name}" class="patient-image">
               <div class="patient-details">
-                <p class="font-semibold">${patient.name}</p>
+                <p class="lgtxt">${patient.name}</p>
                 <div class="flex">
-                  <p class="smtxt text-gray-500">${patient.gender} ${patient.age}</p>
+                  <p class="smtxt ">${patient.gender} ${patient.age}</p>
                 </div>
               </div>
             </div>
@@ -220,6 +252,39 @@
       const jessica = patients.find(
         (patient) => patient.name === "Jessica Taylor"
       );
+
+      const jessica_diagnostic_list = jessica.diagnostic_list;
+
+      const diagnosisBody = document.getElementById("diagnostic_list");
+
+      jessica_diagnostic_list.map((diagnosis) => {
+        const diagnosis_list = document.createElement("li");
+        diagnosis_list.className = "";
+        diagnosis_list.innerHTML = `
+          <div class="tbody">
+            <p>${diagnosis.name}</p>
+            <p>${diagnosis.description}</p>
+            <p>${diagnosis.status}</p>
+          </div>
+        `;
+        diagnosisBody.appendChild(diagnosis_list);
+      });
+
+      const labResult = jessica.lab_results;
+
+      lab = document.getElementById("lab_result");
+
+      labResult.map((result) => {
+        const labResultList = document.createElement("li");
+        labResultList.className = "";
+        labResultList.innerHTML = `
+          <div class="lab_result_list">
+            <p>${result}</p>
+            <img src="./static/download.svg" alt="download" />
+          </div>
+        `;
+        lab.appendChild(labResultList);
+      });
 
       const monthNames = [
         "January",
@@ -383,8 +448,6 @@
       console.error("Fetch error: ", error);
     }
   }
-
-  // edited code start
   function shortenMonthName(month) {
     const monthNames = [
       "Jan",
@@ -402,7 +465,6 @@
     ];
     return monthNames[month - 1];
   }
-  // edited code end
 
   window.onload = fetchPatients;
 </script>
