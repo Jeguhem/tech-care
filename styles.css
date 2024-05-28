@@ -4,6 +4,7 @@ body {
 }
 
 nav {
+  width: 1564px;
   padding: 0 32px;
   height: 72px;
   background-color: #ffffff;
@@ -64,6 +65,7 @@ smtxt .profile-info .subtext {
   display: flex;
   gap: 32px;
   margin-top: 32px;
+  width: 1600px;
 }
 
 aside {
@@ -71,12 +73,13 @@ aside {
   padding: 20px;
   padding-right: 4px;
   border-radius: 16px;
-  max-width: 367px;
+  /* max-width: 367px; */
 }
 
 .aside-header {
   width: 317px;
-  border: solid 1px #01f0d0;
+  padding-right: 16px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,32 +91,39 @@ aside {
 }
 
 .scrollable {
-  max-height: 900px;
+  max-height: 1000px;
   overflow-y: auto;
 }
-::-webkit-scrollbar {
+.small_scrollable {
+  max-height: 190px;
+  overflow-y: auto;
+}
+.scrollable::-webkit-scrollbar,
+.small_scrollable::-webkit-scrollbar {
   width: 6px;
 }
-::-webkit-scrollbar-track {
+.scrollable::-webkit-scrollbar-track,
+.small_scrollable::-webkit-scrollbar-track {
   background: #e3e4e6;
   border-radius: 3px;
   background-clip: content-box;
 }
-::-webkit-scrollbar-thumb {
+.scrollable::-webkit-scrollbar-thumb,
+.small_scrollable::-webkit-scrollbar-thumb {
   background: #072635;
   border-radius: 3px;
 }
 
 .scrollbar-thumb-small {
-  height: 20px;
+  height: 10px;
 }
 
 .patient-list {
   margin-top: 40px;
   list-style: none;
   padding: 0;
-  border: solid 1px #e66fd2;
-  max-width: 317px;
+
+  /* max-width: 317px; */
   padding-right: 20px;
   display: flex;
   flex-direction: column;
@@ -153,7 +163,7 @@ aside {
 }
 
 .middle {
-  width: 766px;
+  /* width: 766px; */
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -169,70 +179,79 @@ aside {
   font-size: 24px;
   line-height: 33px;
   font-weight: 700;
+  color: #072635;
+}
+
+.graph-container h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #072635;
+}
+
+.time_range {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .jessica {
   padding: 32px;
   background-color: #ffffff;
   border-radius: 16px;
+  width: 367px;
+  padding: 20px;
 }
 
-.jessica-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.jessica-info img {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background-color: #f6f7f8;
-}
-
-.jessica-info h2 {
+.jessica_name {
   font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: 700;
+  color: #072635;
+
+  margin-top: 20px;
 }
 
-.jessica-detail {
-  display: flex;
-  border: 1px solid #f6f7f8;
-  padding: 12px;
-  gap: 12px;
-  width: 100%;
-}
-
-.jessica-detail img {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f6f7f8;
-  border-radius: 50%;
-}
-
-.jessica-detail div {
+.jessica_img_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.jessica-detail p {
-  margin: 0;
+.jessica_image {
+  width: 200px;
+  height: 200px;
 }
 
-.jessica-detail .label {
+.jessica_info_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin-top: 32px;
+}
+
+.jessica_detail {
+  display: flex;
+  gap: 16px;
+}
+
+jessica_img_bg {
   color: #707070;
 }
 
-.jessica-detail .value {
+.jessica_detail_label {
+  color: #072635;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.jessica_detail_text {
   color: #072635;
   font-size: 14px;
   font-weight: bold;
 }
+
 .img-info {
   width: 42px;
   height: 42px;
@@ -242,6 +261,12 @@ aside {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.jessica_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {
@@ -255,15 +280,26 @@ aside {
 }
 
 .radio {
-  background-color: #e66fd2;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   border: solid 1px white;
 }
 
+.pink {
+  background-color: #e66fd2;
+}
+.purple {
+  background-color: #8c6fe6;
+}
 .mygraph {
   min-width: 400px;
+}
+
+.mygraph canvas {
+  height: 225px;
+
+  margin-top: 20px;
 }
 
 .blood_pressure {
@@ -273,11 +309,39 @@ aside {
   border-radius: 12px;
   padding: 16px;
   margin-top: 40px;
+  height: 298px;
 }
 .average_values {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  width: 208px;
+}
+
+.average_values_radio {
+  display: flex;
+  color: #072635;
+  font-size: 14px;
+  gap: 4px;
+  align-items: center;
+  font-weight: bold;
+}
+
+.average_values_value {
+  font-size: 32px;
+  color: #072635;
+  font-weight: bold;
+}
+
+.average_levels {
+  display: flex;
+  gap: 8px;
+}
+
+.average_values_levels {
+  font-size: 14px;
+  color: #072635;
 }
 
 .lungs {
@@ -294,33 +358,76 @@ aside {
   display: flex;
   gap: 21px;
   margin-top: 20px;
-  border: solid;
 }
 
 .health_details {
   padding: 16px;
   border-radius: 12px;
+  width: 228px;
+  font-size: 16px;
+  color: #072635;
 }
 
+.health_details_digits {
+  font-size: 30px;
+  color: #072635;
+  font-weight: 800;
+}
 .diagnostic_list {
 }
 
 .table {
   margin-top: 40px;
+  width: 100%; /* Ensure the table takes full width */
 }
-.thead {
+
+.thead,
+.tbody-row {
+  display: flex;
   padding: 16px;
+  align-items: center;
+
+  gap: 16px; /* Adjust gap between columns */
+}
+
+.thead {
   background-color: #f6f7f8;
   border-radius: 24px;
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
+  font-size: 14px;
+  color: #072635;
 }
 
-.tbody {
-  padding: 16px;
-
+.tbody-row {
+  background-color: #ffffff;
+  border-top: 1px solid #e6e6e6;
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
+  color: #072635;
+}
+
+.thead div,
+.tbody-row div {
+  text-align: left;
+  padding: 0px 21px;
+}
+
+.thead div:first-child,
+.tbody-row div:first-child {
+  width: 159px;
+}
+
+.thead div:nth-child(2),
+.tbody-row div:nth-child(2) {
+  width: 287px;
+}
+
+.thead div:nth-child(3),
+.tbody-row div:nth-child(3) {
+  width: 79px;
 }
 
 .end {
@@ -332,13 +439,43 @@ aside {
 .lab_result {
   background-color: #ffffff;
   padding: 20px;
+  border-radius: 16px;
+}
+.lab_result h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #072635;
 }
 
 .lab_list {
   margin-top: 16px;
 }
 
+.bg {
+  background-color: #f6f7f8;
+}
+
+.lab_list_container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+  padding-right: 4px;
+}
+
 .lab_result_list {
   display: flex;
   justify-content: space-between;
+  padding-right: 16px;
+  padding-left: 16px;
+  color: #072635;
+  cursor: default;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.diagnostic_list_name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #072635;
 }

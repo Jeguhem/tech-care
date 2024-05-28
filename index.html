@@ -62,36 +62,42 @@
 
       <div class="middle">
         <div class="graph-container">
-          <div class="flex justify-between">
-            <h2>Diagnosis History</h2>
+          <div class="">
+            <h2 class="">Diagnosis History</h2>
           </div>
           <div class="graph">
             <div class="blood_pressure">
               <div class="mygraph">
                 <div class="flex justify-between">
-                  <p>Blood Pressure</p>
-                  <div class="flex">
-                    <img src="./static/ArrowDown.svg" />
+                  <h3>Blood Pressure</h3>
+                  <div class="time_range">
                     <p>Last 6 months</p>
+                    <img src="./static/down.svg" />
                   </div>
                 </div>
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" class=""></canvas>
               </div>
 
               <div class="average_values">
                 <div>
-                  <div class="radio"></div>
-                  <p id="systolic_value"></p>
-                  <div class="flex">
+                  <div class="average_values_radio">
+                    <div class="radio pink"></div>
+                    <p>Systolic</p>
+                  </div>
+                  <p id="systolic_value" class="average_values_value"></p>
+                  <div class="average_levels">
                     <img src="./static/ArrowDown.svg" />
-                    <p id="systolic_levels"></p>
+                    <p id="systolic_levels" class="average_values_levels"></p>
                   </div>
                 </div>
                 <hr />
                 <div>
-                  <div class="radio"></div>
-                  <p id="diastolic_value"></p>
-                  <div class="flex">
+                  <div class="average_values_radio">
+                    <div class="radio purple"></div>
+                    <p>Diastolic</p>
+                  </div>
+                  <p id="diastolic_value" class="average_values_value"></p>
+                  <div class="average_levels">
                     <img src="./static/ArrowDown.svg" />
                     <p id="diastolic_levels"></p>
                   </div>
@@ -103,19 +109,22 @@
               <div class="health_details lungs">
                 <img src="./static/lungs.svg" />
                 <p>Respiratory rate</p>
-                <p id="respiratory_rate_value"></p>
+                <p
+                  id="respiratory_rate_value"
+                  class="health_details_digits"
+                ></p>
                 <p id="respiratory_rate_levels"></p>
               </div>
               <div class="health_details temperature">
                 <img src="./static/temperature.svg" />
                 <p>Temperature</p>
-                <p id="temperature_value"></p>
+                <p id="temperature_value" class="health_details_digits"></p>
                 <p id="temperature_levels"></p>
               </div>
               <div class="health_details heart_rate">
                 <img src="./static/HeartBPM.svg" />
                 <p>Heart Rate</p>
-                <p id="heart_rate_value"></p>
+                <p id="heart_rate_value" class="health_details_digits"></p>
                 <div class="flex">
                   <img src="./static/ArrowDown.svg" />
                   <p id="heart_rate_levels"></p>
@@ -128,77 +137,85 @@
 
         <!--Diagnostic List start-->
         <div class="diagnostic_list graph-container">
-          <p>Diagnostic List</p>
-          <table class="table">
+          <p class="diagnostic_list_name">Diagnostic List</p>
+          <div class="table">
             <div class="thead">
-              <p>Problem/Diagnosis</p>
-              <p>Description</p>
-              <p>Status</p>
+              <div>Problem/Diagnosis</div>
+              <div>Description</div>
+              <div class="status">Status</div>
             </div>
-            <div>
-              <ul id="diagnostic_list" class=""></ul>
-            </div>
-          </table>
+            <div id="diagnostic_list" class="tbody"></div>
+            <!-- <tr  class=""></tr> -->
+          </div>
         </div>
         <!--Diagnostic List end-->
       </div>
 
       <div class="end">
         <div class="jessica" id="jessica-info">
-          <img id="jessica-image" src="" alt="" class="jessica-image" />
-          <h2 id="jessica-name"></h2>
-          <div class="jessica-detail">
-            <div class="img-info">
-              <img src="./static/BirthIcon.svg" alt="calendar" class="" />
+          <div class="jessica_img_container">
+            <img id="jessica-image" src="" alt="" class="jessica_image" />
+            <h2 id="jessica-name" class="jessica_name"></h2>
+          </div>
+          <div class="jessica_info_wrapper">
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/BirthIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Date of Birth</p>
+                <p id="jessica-dob" class="jessica_detail_text"></p>
+              </div>
             </div>
-            <div>
-              <p class="label">Date of Birth</p>
-              <p id="jessica-dob" class="value"></p>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Gender</p>
+                <p id="jessica-gender" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Contact Info</p>
+                <p id="jessica-phone" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Emergency Contacts</p>
+                <p id="jessica-emergency" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Insurance Provider</p>
+                <p id="jessica-insurance" class="jessica_detail_text"></p>
+              </div>
             </div>
           </div>
-          <div class="jessica-detail">
-            <div class="img-info">
-              <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
-            </div>
-            <div>
-              <p class="label">Gender</p>
-              <p id="jessica-gender" class="value"></p>
-            </div>
+          <div class="jessica_button">
+            <button class="button">Show All Information</button>
           </div>
-          <div class="jessica-detail">
-            <div class="img-info">
-              <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
-            </div>
-            <div>
-              <p class="label">Contact Info</p>
-              <p id="jessica-phone" class="value"></p>
-            </div>
-          </div>
-          <div class="jessica-detail">
-            <div class="img-info">
-              <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
-            </div>
-            <div>
-              <p class="label">Emergency Contacts</p>
-              <p id="jessica-emergency" class="value"></p>
-            </div>
-          </div>
-          <div class="jessica-detail">
-            <div class="img-info">
-              <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
-            </div>
-            <div>
-              <p class="label">Insurance Provider</p>
-              <p id="jessica-insurance" class="value"></p>
-            </div>
-          </div>
-          <button class="button">Show All Information</button>
         </div>
         <!--lab result start-->
         <div class="lab_result">
           <h2>Lab Results</h2>
           <div class="lab_list">
-            <ul id="lab_result"></ul>
+            <ul
+              id="lab_result"
+              class="small_scrollable lab_list_container"
+            ></ul>
           </div>
         </div>
         <!--lab result end-->
@@ -258,14 +275,14 @@
       const diagnosisBody = document.getElementById("diagnostic_list");
 
       jessica_diagnostic_list.map((diagnosis) => {
-        const diagnosis_list = document.createElement("li");
-        diagnosis_list.className = "";
+        const diagnosis_list = document.createElement("div");
+        diagnosis_list.className = "tbody-row";
         diagnosis_list.innerHTML = `
-          <div class="tbody">
-            <p>${diagnosis.name}</p>
-            <p>${diagnosis.description}</p>
-            <p>${diagnosis.status}</p>
-          </div>
+          
+            <div>${diagnosis.name}</div>
+            <div>${diagnosis.description}</div>
+            <div class="status">${diagnosis.status}</div>
+          
         `;
         diagnosisBody.appendChild(diagnosis_list);
       });
@@ -274,15 +291,25 @@
 
       lab = document.getElementById("lab_result");
 
+      let previousClickedElement = null;
+
       labResult.map((result) => {
         const labResultList = document.createElement("li");
-        labResultList.className = "";
+        labResultList.className = "lab-result-item";
         labResultList.innerHTML = `
-          <div class="lab_result_list">
-            <p>${result}</p>
+          <div class="lab_result_list ">
+            <p class="">${result}</p>
             <img src="./static/download.svg" alt="download" />
           </div>
         `;
+        labResultList.addEventListener("click", function () {
+          if (previousClickedElement !== null) {
+            previousClickedElement.classList.remove("bg");
+          }
+          this.classList.add("bg");
+          previousClickedElement = this;
+        });
+
         lab.appendChild(labResultList);
       });
 
@@ -358,14 +385,22 @@
               data: systolicValues,
               borderColor: "rgba(194, 110, 180, 1)",
               backgroundColor: "rgba(255, 99, 132, 0.2)",
-              borderWidth: 2,
+              borderWidth: 3,
+              pointRadius: 5,
+              pointBorderWidth: 1,
+              pointBorderColor: "#ffffff",
+              pointBackgroundColor: "rgba(194, 110, 180, 1)",
             },
             {
               label: "Diastolic",
               data: diastolicValues,
               borderColor: "rgba(126, 108, 171, 1)",
               backgroundColor: "rgba(54, 162, 235, 0.2)",
-              borderWidth: 2,
+              borderWidth: 3,
+              pointRadius: 5,
+              pointBackgroundColor: "rgba(126, 108, 171, 1)",
+              pointBorderWidth: 1,
+              pointBorderColor: "#ffffff",
             },
           ],
         },
@@ -407,8 +442,11 @@
         };
         blood_pressure = jessica.diagnosis_history[0].blood_pressure;
         respiratory_rate = jessica.diagnosis_history[0].respiratory_rate;
+        respiratory_rate_number = respiratory_rate.value + "bpm";
         temperature = jessica.diagnosis_history[0].temperature;
+        temperature_number = temperature.value + "°F";
         heart_rate = jessica.diagnosis_history[0].heart_rate;
+        heart_rate_number = heart_rate.value + "bpm";
 
         document.getElementById("jessica-image").src = jessica.profile_picture;
         document.getElementById("jessica-name").textContent = jessica.name;
@@ -432,15 +470,15 @@
         document.getElementById("diastolic_levels").textContent =
           blood_pressure.diastolic.levels;
         document.getElementById("respiratory_rate_value").textContent =
-          respiratory_rate.value;
+          respiratory_rate_number;
         document.getElementById("respiratory_rate_levels").textContent =
           respiratory_rate.levels;
         document.getElementById("temperature_value").textContent =
-          temperature.value;
+          temperature_number;
         document.getElementById("temperature_levels").textContent =
           temperature.levels;
         document.getElementById("heart_rate_value").textContent =
-          heart_rate.value;
+          heart_rate_number;
         document.getElementById("heart_rate_levels").textContent =
           heart_rate.levels;
       }
@@ -467,5 +505,7 @@
   }
 
   window.onload = fetchPatients;
+
+  console.log(window.screen.availHeight);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
