@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <nav>
+      <img src="./static/TestLogo.svg" alt="logo" />
+      <div class="nav-links">
+        <div class="nav-link">
+          <img src="./static/home.svg" alt="overview" />
+          <p>Overview</p>
+        </div>
+        <div class="nav-link">
+          <img src="./static/group.svg" alt="overview" />
+          <p>Patients</p>
+        </div>
+        <div class="nav-link">
+          <img src="./static/calendar.svg" alt="overview" />
+          <p>Schedule</p>
+        </div>
+        <div class="nav-link">
+          <img src="./static/chat.svg" alt="overview" />
+          <p>Messages</p>
+        </div>
+        <div class="nav-link">
+          <img src="./static/card.svg" alt="overview" />
+          <p>Transactions</p>
+        </div>
+      </div>
+      <div class="profile">
+        <img
+          src="./static/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc.png"
+          alt="senior woman"
+        />
+        <div class="profile-info">
+          <p>Dr. Jose Simmons</p>
+          <p class="subtext">General Practitioner</p>
+        </div>
+        <div class="profile-settings">
+          <img src="./static/settings.svg" alt="settings" />
+          <img src="./static/more.svg" alt="hamburger icon" />
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <aside>
+        <div class="aside-header">
+          <h2>Patients</h2>
+          <img src="./static/search.svg" />
+        </div>
+        <ul id="patient-list" class="patient-list scrollable"></ul>
+      </aside>
+
+      <div class="middle">
+        <div class="graph-container">
+          <div class="">
+            <h2 class="">Diagnosis History</h2>
+          </div>
+          <div class="graph">
+            <div class="blood_pressure">
+              <div class="mygraph">
+                <div class="flex justify-between">
+                  <h3>Blood Pressure</h3>
+                  <div class="time_range">
+                    <p>Last 6 months</p>
+                    <img src="./static/down.svg" />
+                  </div>
+                </div>
+                <canvas id="myChart" class=""></canvas>
+              </div>
+
+              <div class="average_values">
+                <div>
+                  <div class="average_values_radio">
+                    <div class="radio pink"></div>
+                    <p>Systolic</p>
+                  </div>
+                  <p id="systolic_value" class="average_values_value"></p>
+                  <div class="average_levels">
+                    <img src="./static/ArrowDown.svg" />
+                    <p id="systolic_levels" class="average_values_levels"></p>
+                  </div>
+                </div>
+                <hr />
+                <div>
+                  <div class="average_values_radio">
+                    <div class="radio purple"></div>
+                    <p>Diastolic</p>
+                  </div>
+                  <p id="diastolic_value" class="average_values_value"></p>
+                  <div class="average_levels">
+                    <img src="./static/ArrowDown.svg" />
+                    <p id="diastolic_levels"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--heart conditions-->
+            <div class="heart_conditions">
+              <div class="health_details lungs">
+                <img src="./static/lungs.svg" />
+                <p>Respiratory rate</p>
+                <p
+                  id="respiratory_rate_value"
+                  class="health_details_digits"
+                ></p>
+                <p id="respiratory_rate_levels"></p>
+              </div>
+              <div class="health_details temperature">
+                <img src="./static/temperature.svg" />
+                <p>Temperature</p>
+                <p id="temperature_value" class="health_details_digits"></p>
+                <p id="temperature_levels"></p>
+              </div>
+              <div class="health_details heart_rate">
+                <img src="./static/HeartBPM.svg" />
+                <p>Heart Rate</p>
+                <p id="heart_rate_value" class="health_details_digits"></p>
+                <div class="flex">
+                  <img src="./static/ArrowDown.svg" />
+                  <p id="heart_rate_levels"></p>
+                </div>
+              </div>
+            </div>
+            <!--heart conditions-->
+          </div>
+        </div>
+
+        <!--Diagnostic List start-->
+        <div class="diagnostic_list graph-container">
+          <p class="diagnostic_list_name">Diagnostic List</p>
+          <div class="table">
+            <div class="thead">
+              <div>Problem/Diagnosis</div>
+              <div>Description</div>
+              <div class="status">Status</div>
+            </div>
+            <div id="diagnostic_list" class="tbody"></div>
+            <!-- <tr  class=""></tr> -->
+          </div>
+        </div>
+        <!--Diagnostic List end-->
+      </div>
+
+      <div class="end">
+        <div class="jessica" id="jessica-info">
+          <div class="jessica_img_container">
+            <img id="jessica-image" src="" alt="" class="jessica_image" />
+            <h2 id="jessica-name" class="jessica_name"></h2>
+          </div>
+          <div class="jessica_info_wrapper">
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/BirthIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Date of Birth</p>
+                <p id="jessica-dob" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/FemaleIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Gender</p>
+                <p id="jessica-gender" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Contact Info</p>
+                <p id="jessica-phone" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/PhoneIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Emergency Contacts</p>
+                <p id="jessica-emergency" class="jessica_detail_text"></p>
+              </div>
+            </div>
+            <div class="jessica_detail">
+              <div class="img-info">
+                <img src="./static/InsuranceIcon.svg" alt="calendar" class="" />
+              </div>
+              <div>
+                <p class="jessica_detail_label">Insurance Provider</p>
+                <p id="jessica-insurance" class="jessica_detail_text"></p>
+              </div>
+            </div>
+          </div>
+          <div class="jessica_button">
+            <button class="button">Show All Information</button>
+          </div>
+        </div>
+        <!--lab result start-->
+        <div class="lab_result">
+          <h2>Lab Results</h2>
+          <div class="lab_list">
+            <ul
+              id="lab_result"
+              class="small_scrollable lab_list_container"
+            ></ul>
+          </div>
+        </div>
+        <!--lab result end-->
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  async function fetchPatients() {
+    const username = "coalition";
+    const password = "skills-test";
+    const secureCredentials = btoa(`${username}:${password}`);
+
+    try {
+      const response = await fetch(
+        "https://fedskillstest.coalitiontechnologies.workers.dev",
+        {
+          headers: {
+            Authorization: `Basic ${secureCredentials}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+
+      const patients = await response.json();
+      const patientList = document.getElementById("patient-list");
+
+      patients.map((patient) => {
+        const listItem = document.createElement("li");
+        listItem.className = "patient-item";
+
+        listItem.innerHTML = `
+            <div class="patient-info">
+              <img src="${patient.profile_picture}" alt="${patient.name}" class="patient-image">
+              <div class="patient-details">
+                <p class="lgtxt">${patient.name}</p>
+                <div class="flex">
+                  <p class="smtxt ">${patient.gender} ${patient.age}</p>
+                </div>
+              </div>
+            </div>
+            <img src="./static/moreh.svg" alt="more"/>
+          `;
+        patientList.appendChild(listItem);
+      });
+
+      const jessica = patients.find(
+        (patient) => patient.name === "Jessica Taylor"
+      );
+
+      const jessica_diagnostic_list = jessica.diagnostic_list;
+
+      const diagnosisBody = document.getElementById("diagnostic_list");
+
+      jessica_diagnostic_list.map((diagnosis) => {
+        const diagnosis_list = document.createElement("div");
+        diagnosis_list.className = "tbody-row";
+        diagnosis_list.innerHTML = `
+          
+            <div>${diagnosis.name}</div>
+            <div>${diagnosis.description}</div>
+            <div class="status">${diagnosis.status}</div>
+          
+        `;
+        diagnosisBody.appendChild(diagnosis_list);
+      });
+
+      const labResult = jessica.lab_results;
+
+      lab = document.getElementById("lab_result");
+
+      let previousClickedElement = null;
+
+      labResult.map((result) => {
+        const labResultList = document.createElement("li");
+        labResultList.className = "lab-result-item";
+        labResultList.innerHTML = `
+          <div class="lab_result_list ">
+            <p class="">${result}</p>
+            <img src="./static/download.svg" alt="download" />
+          </div>
+        `;
+        labResultList.addEventListener("click", function () {
+          if (previousClickedElement !== null) {
+            previousClickedElement.classList.remove("bg");
+          }
+          this.classList.add("bg");
+          previousClickedElement = this;
+        });
+
+        lab.appendChild(labResultList);
+      });
+
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      const monthMap = {
+        January: 0,
+        February: 1,
+        March: 2,
+        April: 3,
+        May: 4,
+        June: 5,
+        July: 6,
+        August: 7,
+        September: 8,
+        October: 9,
+        November: 10,
+        December: 11,
+      };
+
+      const jessica_health = jessica.diagnosis_history;
+      // Get the latest month and year from the first object in jessica_health
+      const latestMonth = monthMap[jessica_health[0].month];
+      const latestYear = jessica_health[0].year;
+
+      // Calculate the start date for the past 6 months
+      const startDate = new Date(latestYear, latestMonth - 5);
+
+      // Create the latestDate object
+      const latestDate = new Date(latestYear, latestMonth);
+
+      // Filter the jessica_health data to include only the records from the last 6 months
+      const recentHealth = jessica_health.filter((record) => {
+        const recordDate = new Date(record.year, monthMap[record.month]);
+        return recordDate >= startDate && recordDate <= latestDate;
+      });
+
+      const label = recentHealth.map(
+        (record) =>
+          `${shortenMonthName(monthMap[record.month] + 1)}, ${record.year}`
+      );
+
+      const labels = label.reverse();
+
+      const systolicValues = recentHealth.map(
+        (record) => record.blood_pressure.systolic.value
+      );
+      const diastolicValues = recentHealth.map(
+        (record) => record.blood_pressure.diastolic.value
+      );
+
+      const ctx = document.getElementById("myChart");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Systolic",
+              data: systolicValues,
+              borderColor: "rgba(194, 110, 180, 1)",
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderWidth: 3,
+              pointRadius: 5,
+              pointBorderWidth: 1,
+              pointBorderColor: "#ffffff",
+              pointBackgroundColor: "rgba(194, 110, 180, 1)",
+            },
+            {
+              label: "Diastolic",
+              data: diastolicValues,
+              borderColor: "rgba(126, 108, 171, 1)",
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderWidth: 3,
+              pointRadius: 5,
+              pointBackgroundColor: "rgba(126, 108, 171, 1)",
+              pointBorderWidth: 1,
+              pointBorderColor: "#ffffff",
+            },
+          ],
+        },
+        options: {
+          animation: true,
+          elements: {
+            line: {
+              tension: 0.4, // Adjust line tension for smoothness
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 60, // Start Y-axis from 60
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      if (jessica) {
+        const formatDate = (dateString) => {
+          const date = new Date(dateString);
+          const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          return new Intl.DateTimeFormat("en-US", options).format(date);
+        };
+        blood_pressure = jessica.diagnosis_history[0].blood_pressure;
+        respiratory_rate = jessica.diagnosis_history[0].respiratory_rate;
+        respiratory_rate_number = respiratory_rate.value + "bpm";
+        temperature = jessica.diagnosis_history[0].temperature;
+        temperature_number = temperature.value + "°F";
+        heart_rate = jessica.diagnosis_history[0].heart_rate;
+        heart_rate_number = heart_rate.value + "bpm";
+
+        document.getElementById("jessica-image").src = jessica.profile_picture;
+        document.getElementById("jessica-name").textContent = jessica.name;
+        document.getElementById("jessica-dob").textContent = formatDate(
+          jessica.date_of_birth
+        );
+        document.getElementById("jessica-gender").textContent = jessica.gender;
+        document.getElementById("jessica-phone").textContent =
+          jessica.phone_number;
+        document.getElementById("jessica-emergency").textContent =
+          jessica.emergency_contact;
+        document.getElementById("jessica-insurance").textContent =
+          jessica.insurance_type;
+
+        document.getElementById("systolic_value").textContent =
+          blood_pressure.systolic.value;
+        document.getElementById("systolic_levels").textContent =
+          blood_pressure.systolic.levels;
+        document.getElementById("diastolic_value").textContent =
+          blood_pressure.diastolic.value;
+        document.getElementById("diastolic_levels").textContent =
+          blood_pressure.diastolic.levels;
+        document.getElementById("respiratory_rate_value").textContent =
+          respiratory_rate_number;
+        document.getElementById("respiratory_rate_levels").textContent =
+          respiratory_rate.levels;
+        document.getElementById("temperature_value").textContent =
+          temperature_number;
+        document.getElementById("temperature_levels").textContent =
+          temperature.levels;
+        document.getElementById("heart_rate_value").textContent =
+          heart_rate_number;
+        document.getElementById("heart_rate_levels").textContent =
+          heart_rate.levels;
+      }
+    } catch (error) {
+      console.error("Fetch error: ", error);
+    }
+  }
+  function shortenMonthName(month) {
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return monthNames[month - 1];
+  }
+
+  window.onload = fetchPatients;
+
+  console.log(window.screen.availHeight);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
